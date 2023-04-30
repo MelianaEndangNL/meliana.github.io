@@ -1,0 +1,40 @@
+header {
+    background-color: #c7d5df ;
+    color: black;
+    padding: 20px;
+    text-align: center;
+}
+ 
+section {
+    border: 1px solid #ddd;
+    margin: 20px;
+    padding: 10px;
+}
+  
+  /* Style untuk gambar baju */
+img {
+    max-width: 100%;
+    height: auto;
+}
+  
+
+label, select {
+    display: block;
+    margin-bottom: 10px;
+}
+  
+  /* Style untuk tombol sewa sekarang */
+.button {
+    display: inline-block;
+    padding: 10px;
+    background-color: #4282b1;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+  
+.button:hover {
+    background-color: #4282b1;
+}

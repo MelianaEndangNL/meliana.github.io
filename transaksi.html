@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Transaksi Sewa Baju</title>
+    <link rel="stylesheet" href="style4.css">
+  </head>
+  <body>
+    <header>
+      <h1>Transaksi Sewa Baju</h1>
+    </header>
+    <form>
+      <fieldset>
+        <legend>Informasi Pelanggan</legend>
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="alamat">Alamat:</label>
+        <textarea id="alamat" name="alamat" required></textarea><br><br>
+
+        <label for="no_telp">Nomor Telepon:</label>
+        <input type="tel" id="no_telp" name="no_telp" required><br><br>
+      </fieldset>
+
+      <fieldset>
+        <legend>Informasi Sewa</legend>
+        <label for="tgl_sewa">Tanggal Sewa:</label>
+        <input type="date" id="tgl_sewa" name="tgl_sewa" required><br><br>
+
+        <label for="lama_sewa">Lama Sewa:</label>
+        <input type="number" id="lama_sewa" name="lama_sewa" required> hari<br><br>
+
+        <label for="baju_sewa">Baju yang Disewa:</label>
+        <select id="baju_sewa" name="baju_sewa" required>
+          <option value="">Pilih Baju</option>
+          <option value="baju_pesta">Baju Pesta - Rp. 100.000/hari</option>
+          <option value="baju_kasual">Baju Kasual - Rp. 30.000/hari</option>
+          <option value="baju_formal">Baju Formal - Rp. 50.000/hari</option>
+        </select><br><br>
+
+        <label for="jumlah_sewa">Jumlah Sewa:</label>
+        <input type="number" id="jumlah_sewa" name="jumlah_sewa" required><br><br>
+      </fieldset>
+
+      <fieldset>
+        <legend>Informasi Pembayaran</legend>
+        <label for="metode_pembayaran">Metode Pembayaran:</label>
+        <select id="metode_pembayaran" name="metode_pembayaran" required>
+          <option value="">Pilih Metode Pembayaran</option>
+          <option value="transfer_bank">Transfer Bank</option>
+          <option value="kartu_kredit">Kartu Kredit</option>
+          <option value="cash">Cash</option>
+        </select><br><br>
+      <fieldset>
+        <legend>Ukuran Baju</legend>
+        <label for="ukuran_baju">Pilih ukuran baju:</label>
+        <select id="ukuran_baju" name="ukuran_baju" required>
+          <option value="">Pilih Ukuran</option>
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+          </select><br><br>
+      </fieldset>
+        <label for="total_biaya">Total Biaya:</label>
+        <input type="text" id="total_biaya" name="total_biaya" readonly><br><br>
+      </fieldset>
+
+      <button type="submit">Konfirmasi Sewa</button>
+      <script>
+        // Mendapatkan elemen form HTML
+        const form = document.querySelector('form');
+      
+        // Mendapatkan elemen input jumlah sewa
+        const jumlahSewa = document.getElementById('jumlah_sewa');
+      
+        // Mendapatkan elemen select baju sewa
+        const bajuSewa = document.getElementById('baju_sewa');
+      
+        // Mendapatkan elemen input total biaya
+        const totalBiaya = document.getElementById('total_biaya');
+      
+        // Menghitung total biaya
+        function hitungTotalBiaya() {
+          let hargaSewa;
+          const selectedBaju = bajuSewa.value;
+      
+          // Menentukan harga sewa berdasarkan pilihan baju
+          switch (selectedBaju) {
+            case 'baju_pesta':
+              hargaSewa = 100000;
+              break;
+            case 'baju_kasual':
+              hargaSewa = 30000;
+              break;
+            case 'baju_formal':
+              hargaSewa = 50000;
+              break;
+            default:
+              hargaSewa = 0;
+              break;
+          }
+      
+          // Menghitung total biaya
+          const total = jumlahSewa.value * hargaSewa;
+          totalBiaya.value = total.toLocaleString('id-ID');
+        }
+      
+        // Menambahkan event listener pada form
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+          hitungTotalBiaya();
+        });
+      
+        // Menambahkan event listener pada input jumlah sewa dan select baju sewa
+        jumlahSewa.addEventListener('input', hitungTotalBiaya);
+        bajuSewa.addEventListener('input', hitungTotalBiaya);
+      </script>
+      
+    </form>
+  </body>
+</html>
